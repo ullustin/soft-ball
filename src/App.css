@@ -19,6 +19,12 @@
   color: white;
 }
 
+.table-scroll {
+  height:250px;
+  overflow:auto;
+  margin-top:20px;
+}
+
 .App-link {
   color: #61dafb;
 }

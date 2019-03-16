@@ -1,0 +1,24 @@
+
+
+.DottedBox {
+}
+
+
+
+.ottedBox {
+    height:650px;
+    overflow:auto;
+    margin-top:20px;
+}
+
+.record-count{
+    visibility: hidden !important;
+}
+
+.clear-filter{
+    visibility: hidden !important;
+}
+
+.pagerTop{
+    visibility: hidden;
+}

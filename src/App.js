@@ -1,26 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Nav, Grid} from "tabler-react";
+
 import './App.css';
+import Home from "./components/Home"
+import Stats from "./components/stats/Stats";
+import StatsUpload from "./components/stats/StatsUpload"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSort, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faAngleUp);
+library.add(faAngleDown);
+library.add(faSort);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <Router>
+            <div>
+
+                <Grid.Row>
+                    <Grid.Col width={12}>
+                        <Nav>
+                            <Nav.Item ></Nav.Item>
+                            <Nav.Item icon="globe"></Nav.Item>
+                            <Nav.Item to="/">Home</Nav.Item>
+                            <Nav.Item to="/stats">Stats</Nav.Item>
+                            <Nav.Item to="/upload-stats">StatsUpload</Nav.Item>
+
+                        </Nav>
+                    </Grid.Col>
+                </Grid.Row>
+                <Route path="/" exact component={Home}/>
+                <Route path="/stats" component={Stats}/>
+                <Route path="/upload-stats" component={StatsUpload}/>
+
+            </div>
+        </Router>
     );
   }
 }
