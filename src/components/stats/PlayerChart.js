@@ -31,10 +31,6 @@ class PlayerChart extends Component{
             )
         });
         dataArray = dataArray.sort(this.compare);
-        console.log("-----test-----");
-        console.log(this.props);
-        console.log(dataArray);
-
         return dataArray;
     };
 
