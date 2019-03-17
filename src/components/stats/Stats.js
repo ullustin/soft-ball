@@ -18,7 +18,7 @@ class Stats extends Component  {
     }
 
     fetchPlayers(){
-        fetch(`http://localhost:8080/v1/soft-ball/stats/get-all-players-and-stats`)
+        fetch(`http://167.99.103.86:8080/v1/soft-ball/stats/get-all-players-and-stats`)
             .then(response => response.json())
             .then(
                 data => {
