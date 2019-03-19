@@ -1,0 +1,5 @@
+docker build -t 167.99.103.86:5000/com.softball/softball:0.1.2 .
+docker save -o softballservice0.1.0 167.99.103.86:5000/com.softball/soft-ball:0.1.2
+
+docker load -i softballservicelatest
+docker run -p 8080:8080 [imagename]
