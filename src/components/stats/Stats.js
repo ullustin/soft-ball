@@ -3,7 +3,7 @@ import StatsGrid from "./StatsGrid"
 import PlayerProfilesGroup from "./PlayerProfilesGroup"
 import { css } from '@emotion/core';
 // First way to import
-import { ClipLoader, GridLoader } from 'react-spinners';
+import { ClipLoader, GridLoader, FadeLoader } from 'react-spinners';
 import "./StatsGrid.css";
 
 const override = css`
@@ -79,7 +79,7 @@ class Stats extends Component  {
                     <PlayerProfilesGroup player={this.state.player}/>
                 </div>
                 <div className='sweet-loading'>
-                    <GridLoader
+                    <FadeLoader
                         css={override}
                         sizeUnit={"px"}
                         size={150}

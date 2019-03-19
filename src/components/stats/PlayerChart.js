@@ -24,25 +24,102 @@ class PlayerChart extends Component{
         return comparison;
     }
 
+    getKeyAndRange = (valueKey) =>{
+        let keyAndRange = {};
+
+        switch(valueKey){
+            case 'average':
+                keyAndRange['key'] = "Average";
+                keyAndRange['range'] = [300,1000];
+                return keyAndRange;
+            case 'battingPercentage':
+                keyAndRange['key'] = "On Base %";
+                keyAndRange['range'] = [300,1000];
+                return keyAndRange;
+            case 'plateAppearances':
+                keyAndRange['key'] = "Plate Appearences";
+                keyAndRange['range'] = [0,100];
+                return keyAndRange;
+            case 'hits':
+                keyAndRange['key'] = "Hits";
+                keyAndRange['range'] = [0,100];
+                return keyAndRange;
+            case 'atBats':
+                keyAndRange['key'] = "At Bats";
+                keyAndRange['range'] = [0,100];
+                return keyAndRange;
+            case 'runs':
+                keyAndRange['key'] = "Runs";
+                keyAndRange['range'] = [0,100];
+                return keyAndRange;
+            case 'firstBase':
+                keyAndRange['key'] = "Singles";
+                keyAndRange['range'] = [0,50];
+                return keyAndRange;
+            case 'secondBase':
+                keyAndRange['key'] = "Doubles";
+                keyAndRange['range'] = [0,50];
+                return keyAndRange;
+            case 'thirdBase':
+                keyAndRange['key'] = "Triples";
+                keyAndRange['range'] = [0,50];
+                return keyAndRange;
+            case 'homeRuns':
+                keyAndRange['key'] = "Home Runs";
+                keyAndRange['range'] = [0,50];
+                return keyAndRange;
+            case 'walks':
+                keyAndRange['key'] = "Walks";
+                keyAndRange['range'] = [0,50];
+                return keyAndRange;
+            case 'rbis':
+                keyAndRange['key'] = "RBIS";
+                keyAndRange['range'] = [0,100];
+                return keyAndRange;
+                break;
+                keyAndRange['key'] = "Average";
+                keyAndRange['range'] = [300,1000];
+                return keyAndRange;
+        }
+
+    }
+
     filterData = () =>{
         let dataArray = [];
+        let keyAndRange = this.getKeyAndRange(this.props.statSelection);
+        let stat = this.props.statSelection;
+
         this.props.playerStats.forEach(function(stats){
+            let gridstat = {};
+            if(keyAndRange.key == "Average" || keyAndRange.key == "On Base %")
+                gridstat[keyAndRange.key] = stats[stat]*1000;
+            else
+                gridstat[keyAndRange.key] = stats[stat];
+            gridstat["Year"] = stats.year;
+
+
             dataArray.push(
-                {Year:stats.year ,Average:stats.average*1000}
+                gridstat
             )
         });
+
         dataArray = dataArray.sort(this.compare);
+        console.log(dataArray);
         return dataArray;
     };
 
-    data = [
-        {Year: '2013', Average: 768},
-        {Year: '2014', Average: 701},
-        {Year: '2015', Average: 702},
-        {Year: '2016', Average: 746},
-        {Year: '2017', Average: 618},
-        {Year: '2018', Average: 703}
-    ];
+    yAxisDomain = () => {
+        let keyAndRange = this.getKeyAndRange(this.props.statSelection);
+        console.log(keyAndRange.range);
+        return keyAndRange.range;
+    };
+
+    getDataKey = () => {
+        let keyAndRange = this.getKeyAndRange(this.props.statSelection);
+        console.log(keyAndRange.range);
+        return keyAndRange.key;
+    }
+
 
     render() {
         return (
@@ -58,10 +135,10 @@ class PlayerChart extends Component{
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="Year" />
                     {/*<YAxis type="number" domain={['dataMin - 100', 'dataMax + 100']} />*/}
-                    <YAxis type="number" domain={[300, 1000]} />
+                    <YAxis type="number" domain={this.yAxisDomain()} />
 
                     <Tooltip />
-                    <Line type="monotone" dataKey="Average" stroke="#8884d8" fill="#8884d8" />
+                    <Line type="monotone" dataKey={this.getDataKey()} stroke="#8884d8" fill="#8884d8" />
                 </LineChart>
 
             </div>

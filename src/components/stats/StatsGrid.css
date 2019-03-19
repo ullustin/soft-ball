@@ -13,6 +13,10 @@
     min-width:330px;
 }
 
+.defaultColumn{
+    max-width:50px;
+}
+
 
 .DottedBox {
     overflow-x: scroll;
@@ -29,4 +33,8 @@
 
 .pagerTop{
     visibility: hidden;
+}
+
+.selectMargin{
+    margin-bottom:30px;
 }
