@@ -1,13 +1,17 @@
 
 
-.DottedBox {
+.ttedBox {
 }
 
 
+.gridSize{
+    min-width:300px;
+    width:300px;
+}
 
-.ottedBox {
-    height:650px;
-    overflow:auto;
+
+.DottedBox {
+    overflow-x: scroll;
     margin-top:20px;
 }
 

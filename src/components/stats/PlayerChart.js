@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,} from 'recharts';
-//import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,} from 'recharts';
+import "./StatsGrid.css";
+
 
 class PlayerChart extends Component{
 
@@ -45,7 +46,7 @@ class PlayerChart extends Component{
 
     render() {
         return (
-            <div>
+            <div className="gridSize">
                 <LineChart
                     width={400}
                     height={200}

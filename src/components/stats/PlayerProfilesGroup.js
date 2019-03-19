@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import StatsGrid from "./StatsGrid";
 import PlayerChart from "./PlayerChart"
 import PlayerStatsSummary from "./PlayerStatsSummary"
+import "./StatsGrid.css";
 
 class PlayerProfilesGroup extends Component {
 
@@ -22,10 +23,13 @@ class PlayerProfilesGroup extends Component {
                     </Card.Header>
                     <Card.Body>
                         <Grid.Row>
-                            <Grid.Col width={4}>
+                            <Grid.Col className="gridSize" width={4}>
                                 <PlayerChart playerStats={this.props.player.statsDTOS}/>
                             </Grid.Col>
-                            <Grid.Col width={8}>
+                            <Grid.Col width={1}>
+                            </Grid.Col>
+
+                            <Grid.Col width={7}>
                                 <PlayerStatsSummary stats={this.props.player.statsDTOS} />
                             </Grid.Col>
                         </Grid.Row>
