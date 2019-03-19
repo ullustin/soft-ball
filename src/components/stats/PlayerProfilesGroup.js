@@ -26,10 +26,7 @@ class PlayerProfilesGroup extends Component {
                             <Grid.Col className="gridSize" width={4}>
                                 <PlayerChart playerStats={this.props.player.statsDTOS}/>
                             </Grid.Col>
-                            <Grid.Col width={1}>
-                            </Grid.Col>
-
-                            <Grid.Col width={7}>
+                            <Grid.Col className="summaryGridSize" width={8}>
                                 <PlayerStatsSummary stats={this.props.player.statsDTOS} />
                             </Grid.Col>
                         </Grid.Row>

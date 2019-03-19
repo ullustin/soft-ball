@@ -9,6 +9,10 @@
     width:300px;
 }
 
+.summaryGridSize{
+    min-width:330px;
+}
+
 
 .DottedBox {
     overflow-x: scroll;

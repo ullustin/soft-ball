@@ -48,7 +48,7 @@ class PlayerChart extends Component{
         return (
             <div className="gridSize">
                 <LineChart
-                    width={400}
+                    width={350}
                     height={200}
                     data={this.filterData()}
                     margin={{
