@@ -1,6 +1,16 @@
 import React, {Component} from "react";
 import StatsGrid from "./StatsGrid"
 import PlayerProfilesGroup from "./PlayerProfilesGroup"
+import { css } from '@emotion/core';
+// First way to import
+import { ClipLoader, GridLoader } from 'react-spinners';
+import "./StatsGrid.css";
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+`;
 
 class Stats extends Component  {
 
@@ -11,6 +21,7 @@ class Stats extends Component  {
         this.selectPlayer = this.selectPlayer.bind(this);
 
         this.state = {
+            loading: true,
             players: [],
             player:{},
             year: 2018
@@ -23,7 +34,8 @@ class Stats extends Component  {
             .then(
                 data => {
                     this.setState({
-                        players:data
+                        players:data,
+                        loading:false
                     });
                 }
             )
@@ -59,10 +71,25 @@ class Stats extends Component  {
 
     render(){
         return (
+
+
             <div className="container">
                 <h1></h1>
-                <PlayerProfilesGroup player={this.state.player}/>
-                <StatsGrid updateYear={this.updateYear} selectPlayer={this.selectPlayer} players={this.state.players} year={this.state.year} />
+                <div id="profile-group">
+                    <PlayerProfilesGroup player={this.state.player}/>
+                </div>
+                <div className='sweet-loading'>
+                    <GridLoader
+                        css={override}
+                        sizeUnit={"px"}
+                        size={150}
+                        color={'#467fcf'}
+                        loading={this.state.loading}
+                    />
+                </div>
+
+                {!this.state.loading && <StatsGrid  updateYear={this.updateYear} selectPlayer={this.selectPlayer} players={this.state.players} year={this.state.year} />}
+
             </div>
         );
     }

@@ -21,6 +21,9 @@ class StatsGrid extends Component {
 
     handleSelectPlayer = (event) => {
         this.props.selectPlayer(event.target.value);
+        var element = document.getElementById("profile-group");
+        element.scrollIntoView(true);
+
     }
 
     dropdown(){

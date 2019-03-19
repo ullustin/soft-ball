@@ -1,0 +1,8 @@
+install Instructions
+
+1. push changes to github repo
+2. log onto server
+3. go to directory /var/www/soft-ball
+4. pull latest changes
+5. run sudo npm run build
+6. restart nginx server
