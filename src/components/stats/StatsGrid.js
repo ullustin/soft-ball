@@ -93,8 +93,8 @@ class StatsGrid extends Component {
         const fields = [
             { name: "",                  displayName: this.dropdown(),                   buttonMethod:this.handleSelectPlayer, render:renderPlayerButton },
             { name: 'name',              displayName: "Name",               inputFilterable: true, sortable: true },
-            { name: 'battingPercentage', displayName: "OBP",  inputFilterable: true, exactFilterable: true, sortable: true },
             { name: 'average',           displayName: "Average",            inputFilterable: true, exactFilterable: true, sortable: true },
+            { name: 'battingPercentage', displayName: "OBP",  inputFilterable: true, exactFilterable: true, sortable: true },
             { name: 'plateAppearances',  displayName: "PA",   inputFilterable: true, exactFilterable: true, sortable: true },
             { name: 'atBats',            displayName: "AB",             inputFilterable: true, exactFilterable: true, sortable: true },
             { name: 'runs',              displayName: "Runs",               inputFilterable: true, exactFilterable: true, sortable: true },
