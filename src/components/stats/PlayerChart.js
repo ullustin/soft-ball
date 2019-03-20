@@ -121,6 +121,7 @@ class PlayerChart extends Component{
     }
 
 
+
     render() {
         return (
             <div className="gridSize">
@@ -138,7 +139,7 @@ class PlayerChart extends Component{
                     <YAxis type="number" domain={this.yAxisDomain()} />
 
                     <Tooltip />
-                    <Line type="monotone" dataKey={this.getDataKey()} stroke="#8884d8" fill="#8884d8" />
+                    <Line type="monotone" dataKey={this.getDataKey()} label={<CustomizedLabel />} stroke="#8884d8" fill="#8884d8" />
                 </LineChart>
 
             </div>
@@ -147,4 +148,17 @@ class PlayerChart extends Component{
 }
 
 export default PlayerChart;
+
+
+
+
+class CustomizedLabel extends Component {
+    render() {
+        const {
+            x, y, stroke, value,
+        } = this.props;
+
+        return <text color="red" x={x} y={y} dy={-10} fill="#DC143C" fontSize={15} textAnchor="left">{value}</text>;
+    }
+}
 
