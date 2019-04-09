@@ -24,12 +24,13 @@ class Stats extends Component  {
             loading: true,
             players: [],
             player:{},
+            leagueAverages:{},
             year: 2018
         };
     }
 
     fetchPlayers(){
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/stats/get-all-players-and-stats`)
+        fetch(`http://localhost:8080/v1/soft-ball/stats/get-all-players-and-stats`)
             .then(response => response.json())
             .then(
                 data => {
@@ -71,8 +72,6 @@ class Stats extends Component  {
 
     render(){
         return (
-
-
             <div className="container">
                 <h1></h1>
                 <div id="profile-group">
