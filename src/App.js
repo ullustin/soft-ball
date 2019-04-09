@@ -6,6 +6,7 @@ import './App.css';
 import Home from "./components/Home"
 import Stats from "./components/stats/Stats";
 import StatsUpload from "./components/stats/StatsUpload"
+import Rankings from "./components/rankings/Rankings"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSort, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
@@ -26,7 +27,6 @@ class App extends Component {
                             <Nav.Item icon="globe"></Nav.Item>
                             <Nav.Item to="/">Home</Nav.Item>
                             <Nav.Item to="/stats">Stats</Nav.Item>
-                            <Nav.Item to="/upload-stats">StatsUpload</Nav.Item>
 
                         </Nav>
                     </Grid.Col>
@@ -34,6 +34,7 @@ class App extends Component {
                 <Route path="/" exact component={Home}/>
                 <Route path="/stats" component={Stats}/>
                 <Route path="/upload-stats" component={StatsUpload}/>
+                <Route path="/rankings" component={Rankings}/>
 
             </div>
         </Router>
