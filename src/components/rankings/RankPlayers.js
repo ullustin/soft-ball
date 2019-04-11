@@ -162,9 +162,11 @@ class RankPlayers extends Component{
     };
 
     selectCaptain = (event) =>{
+        console.log(event.target.value)
         this.setState({
             selectedCaptain:event.target.value
         })
+        console.log(this.state.selectedCaptain);
 
     }
 
