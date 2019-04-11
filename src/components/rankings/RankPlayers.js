@@ -54,7 +54,7 @@ class RankPlayers extends Component{
 
         let optionsList = this.props.captainsList.map(function(item){
             return(
-                <option key={item.playerId} value={item.playerId} >{item.playerName}</option>
+                <option key={item.playerId} value={item} >{item.playerName}</option>
             );
         });
         return optionsList;
