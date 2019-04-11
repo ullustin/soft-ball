@@ -111,7 +111,8 @@ class RankPlayers extends Component{
         });
         if(duplicatesExist)
             this.setState({
-                duplicateError:true
+                duplicateError:true,
+                loading:false
             });
         else{
             let captainRankDTO = {};
@@ -180,7 +181,7 @@ class RankPlayers extends Component{
                     </Card.Header>
                     <Card.Body>
                         {!this.state.loading &&
-                            <Form.Select value={this.props.captainsList[0].id} onChange={this.selectCaptain}
+                            <Form.Select value={this.state.selectedCaptainId} onChange={this.selectCaptain}
                                          className="selectMargin">
                                 {this.renderCaptainsList()}
                             </Form.Select>
