@@ -97,9 +97,10 @@ class RankPlayers extends Component{
     }
 
     submitForm = () =>{
-        this.setState({
-            loading:true
-        });
+        // this.setState({
+        //     loading:true,
+        //     selectedCaptainId:this.state.selectedCaptainId
+        // });
         let idSet = new Set();
         let duplicatesExist = false;
         this.state.selectedOptions.map(function(item){
