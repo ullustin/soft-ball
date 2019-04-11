@@ -182,8 +182,10 @@ class RankPlayers extends Component{
                         </Card.Title>
                     </Card.Header>
                     <Card.Body>
+                        {/*value={this.state.selectedCaptainId}*/}
+
                         {!this.state.loading &&
-                            <Form.Select value={this.state.selectedCaptainId} onChange={this.selectCaptain}
+                            <Form.Select  onChange={this.selectCaptain}
                                          className="selectMargin">
                                 {this.renderCaptainsList()}
                             </Form.Select>
