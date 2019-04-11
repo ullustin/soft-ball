@@ -18,7 +18,7 @@ class RankPlayers extends Component{
         this.state = {
             loading:false,
             selectedOptions:[],
-            selectedCaptainId:props.captainsList[0],
+            selectedCaptainId:props.captainsList[0].playerId,
             captainsList:[],
             validForm:false,
             duplicateError:false
@@ -54,7 +54,7 @@ class RankPlayers extends Component{
 
         let optionsList = this.props.captainsList.map(function(item){
             return(
-                <option key={item.playerId} value={item} >{item.playerName}</option>
+                <option key={item.playerId} value={item.playerId} >{item.playerName}</option>
             );
         });
         return optionsList;
@@ -165,7 +165,7 @@ class RankPlayers extends Component{
         console.log(event.target.value)
         this.setState({
             selectedCaptain:event.target.value
-        })
+        });
         console.log(this.state.selectedCaptain);
 
     }
