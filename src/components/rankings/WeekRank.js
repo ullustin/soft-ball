@@ -16,7 +16,6 @@ class WeekRank extends Component{
             if(item.id == event.target.value)
                 rank = item;
         });
-
         this.props.weekRankHandler(rank);
     };
 

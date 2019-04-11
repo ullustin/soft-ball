@@ -28,7 +28,7 @@ class Rankings extends Component{
     };
 
     getWeeklyRanks(){
-        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-week-ranks`)
+        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-week-ranks`)
             .then(response => response.json())
             .then(
                 data => {
@@ -42,7 +42,7 @@ class Rankings extends Component{
     }
 
     getPlayersList(){
-        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-players-list`)
+        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-players-list`)
             .then(response => response.json())
             .then(
                 data => {
@@ -55,20 +55,23 @@ class Rankings extends Component{
     }
 
     getCaptainsList(weekRank){
-
-        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-captains-list?weekRankId=${weekRank.id}`)
+        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-captains-list?weekRankId=${weekRank.id}`)
             .then(response => response.json())
             .then(
                 data => {
-                    this.setState({
-                        captainsList:data,
-                        loading:this.state.loading,
-                        weeklyRanks:this.state.weeklyRanks,
-                        selectedWeekRank:weekRank
-                    });
+                    if(data.length != 0){
+                        this.setState({
+                            captainsList:data,
+                            loading:this.state.loading,
+                            weeklyRanks:this.state.weeklyRanks,
+                            selectedWeekRank:weekRank
+                        });
+                    }
                 }
             )
-            .catch(error => this.setState({ error, isLoading: false }));
+            .catch(error => {
+                this.setState({ error, isLoading: false })
+            });
     }
 
     clearSelectedWeekRankHandler(){
