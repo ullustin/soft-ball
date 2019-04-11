@@ -120,9 +120,6 @@ class RankPlayers extends Component{
             captainRankDTO["weekRankId"] = this.props.selectedWeekRank.id;
             captainRankDTO["captain"] = "default";
             captainRankDTO["captainId"] = this.state.selectedCaptainId;
-            console.log("Test")
-            console.log(captainRankDTO);
-            console.log(captainRankDTO.captainId);
 
             let playerDTOList = [];
 
