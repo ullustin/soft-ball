@@ -18,7 +18,7 @@ class RankPlayers extends Component{
         this.state = {
             loading:false,
             selectedOptions:[],
-            selectedCaptainId:props.captainsList[0].playerId,
+            selectedCaptainId:props.captainsList[0],
             captainsList:[],
             validForm:false,
             duplicateError:false
