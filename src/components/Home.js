@@ -12,6 +12,10 @@ class Home extends Component {
             <div className="container">
                 <h1></h1>
                 <Grid.Row >
+                    <Grid.Col className="OutFieldClass" width={6}>
+                        <RankingsView position="OutField" />
+                    </Grid.Col>
+
 
                     <Grid.Col width={6}>
                         {/*<Card>*/}
@@ -28,10 +32,6 @@ class Home extends Component {
                         {/*</Card>*/}
 
                     </Grid.Col>
-                    <Grid.Col className="OutFieldClass" width={6}>
-                        <RankingsView position="OutField" />
-                    </Grid.Col>
-
                 </Grid.Row>
 
             </div>
