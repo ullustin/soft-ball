@@ -29,7 +29,7 @@ class WeekRank extends Component{
                                 <Grid.Col className="Position" width={12}>{item.position}</Grid.Col>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Col width={8}>Week {item.week}</Grid.Col>
+                                <Grid.Col width={8}>Week: {item.week == 0 ? "Pre Season": item.week}</Grid.Col>
                                 <Grid.Col width={4}>
                                     <Button onClick={handler} value={item.id} color="primary">Rank</Button>
                                 </Grid.Col>
