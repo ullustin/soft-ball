@@ -137,7 +137,7 @@ class RankPlayers extends Component{
 
             captainRankDTO["playerRankDTOList"] = playerDTOList;
 
-            fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/save-ranking`, {
+            fetch(`http://localhost:8080/v1/soft-ball/rankings/save-ranking`, {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(captainRankDTO), // data can be `string` or {object}!
                 headers:{

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Table} from "tabler-react";
-import "./StatsGrid.css";
+import "../grid/StatsGrid.css";
 
 
 class PlayerStatsSummary extends Component{

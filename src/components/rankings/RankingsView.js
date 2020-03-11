@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import {Grid, Card, Form, List, Button,Alert, Table} from "tabler-react";
-import { ClipLoader, GridLoader, FadeLoader } from 'react-spinners';
-import Select from 'react-select';
+import {Grid, Card, Form, Table} from "tabler-react";
+import {FadeLoader } from 'react-spinners';
 import { css } from '@emotion/core';
 
 const override = css`
@@ -26,20 +25,16 @@ class RankingsView extends Component{
             position:props.position
         }
     }
-
-
     changeSelectPosition(event){
         this.setState({
             position:event.target.value
         })
     }
-
     changeSelectWeek(event){
         this.setState({
             selectedWeek:event.target.value
         })
     }
-
     createPositionOptions(){
 
         let positionSet = new Set();
@@ -57,8 +52,6 @@ class RankingsView extends Component{
 
         return positionOptions;
     }
-
-
     createWeekOptions(){
 
         let weekSet = new Set();
@@ -82,7 +75,6 @@ class RankingsView extends Component{
         })
         return weekOptions;
     }
-
     getTopTen(){
 
         let rank = null;
@@ -114,7 +106,6 @@ class RankingsView extends Component{
         }
         return topTen
     }
-
     getTrailing(){
         let rank = null;
         let week = this.state.selectedWeek;
@@ -137,9 +128,8 @@ class RankingsView extends Component{
         }
         return trailingString;
     }
-
     getRankings(){
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-rankings-by-week`)
+        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-rankings-by-week`)
             .then(response => response.json())
             .then(
                 data => {
@@ -158,11 +148,9 @@ class RankingsView extends Component{
                 this.setState({ error, isLoading: false })
             });
     }
-
     componentDidMount(){
         this.getRankings();
     }
-
     render(){
         return (
             <div>

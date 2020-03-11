@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import StatsGrid from "./StatsGrid"
-import PlayerProfilesGroup from "./PlayerProfilesGroup"
+import StatsGrid from "./grid/StatsGrid"
+import PlayerProfilesGroup from "./summary/PlayerProfilesGroup"
 import { css } from '@emotion/core';
 // First way to import
-import { ClipLoader, GridLoader, FadeLoader } from 'react-spinners';
-import "./StatsGrid.css";
+import {FadeLoader } from 'react-spinners';
+import "./grid/StatsGrid.css";
+import {Grid} from "tabler-react";
 
 const override = css`
     display: block;
@@ -25,12 +26,12 @@ class Stats extends Component  {
             players: [],
             player:{},
             leagueAverages:{},
-            year: 2018
+            year: 2019
         };
     }
 
     fetchPlayers(){
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/stats/get-all-players-and-stats`)
+        fetch(`http://localhost:8080/v1/soft-ball/stats/get-all-players-and-stats`)
             .then(response => response.json())
             .then(
                 data => {
@@ -86,9 +87,13 @@ class Stats extends Component  {
                         loading={this.state.loading}
                     />
                 </div>
+                <Grid.Row>
+                    <Grid.Col  width={16}>
+                        {!this.state.loading && <StatsGrid isDraft={false} updateYear={this.updateYear} selectPlayer={this.selectPlayer} players={this.state.players} year={this.state.year} />}
+                    </Grid.Col>
+                </Grid.Row>
 
 
-                {!this.state.loading && <StatsGrid  updateYear={this.updateYear} selectPlayer={this.selectPlayer} players={this.state.players} year={this.state.year} />}
 
             </div>
         );

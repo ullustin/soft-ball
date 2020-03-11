@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "tabler-react/dist/Tabler.css";
-import {Grid, Card, Form} from "tabler-react";
+import {Grid} from "tabler-react";
 import WeekRank from "./WeekRank";
 import RankPlayers from "./RankPlayers"
 
@@ -28,7 +28,7 @@ class Rankings extends Component{
     };
 
     getWeeklyRanks(){
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-week-ranks`)
+        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-week-ranks`)
             .then(response => response.json())
             .then(
                 data => {
@@ -42,7 +42,7 @@ class Rankings extends Component{
     }
 
     getPlayersList(){
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-players-list`)
+        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-players-list`)
             .then(response => response.json())
             .then(
                 data => {
@@ -55,7 +55,7 @@ class Rankings extends Component{
     }
 
     getCaptainsList(weekRank){
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/rankings/get-captains-list?weekRankId=${weekRank.id}`)
+        fetch(`http://localhost:8080/v1/soft-ball/rankings/get-captains-list?weekRankId=${weekRank.id}`)
             .then(response => response.json())
             .then(
                 data => {

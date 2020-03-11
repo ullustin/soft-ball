@@ -1,0 +1,20 @@
+.plusStyle{
+    size:10px;
+}
+
+.leagueHeader{
+    text-align: center;
+}
+
+.leagueColumn{
+    min-width:320px;
+}
+
+.leagueBody{
+    text-align: center;
+    vertical-align: center;
+}
+
+.middleAlign{
+    vertical-align: middle !important;
+}

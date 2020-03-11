@@ -75,7 +75,7 @@ class StatsUpload extends Component{
 
 
     fetchPlayers(){
-        fetch(`http://167.99.103.86/v1/soft-ball/stats/get-all-players-and-stats`)
+        fetch(`http://localhost/v1/soft-ball/stats/get-all-players-and-stats`)
             .then(response => response.json())
             .then(
                 data => {
@@ -123,7 +123,7 @@ class StatsUpload extends Component{
     postData = () => {
         let playersList = this.convertToDTO(this.state.uploadedStats);
 
-        fetch(`http://167.99.103.86:8080/v1/soft-ball/stats/insert-uploaded-stats`, {
+        fetch(`http://localhost:8080/v1/soft-ball/stats/insert-uploaded-stats`, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(playersList), // data can be `string` or {object}!
             headers:{

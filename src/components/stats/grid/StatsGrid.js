@@ -26,9 +26,15 @@ class StatsGrid extends Component {
 
     }
 
+    draftSelectPlayer = (event) => {
+        console.log("GOT HERE");
+        this.props.draftPlayer(event.target.value);
+    };
+
     dropdown(){
         return(
             <Form.Select onChange={this.handleYearChange} value={this.props.year} className="selectgroup-item">
+                <option key="2019" value="2019">2019</option>
                 <option key="2018" value="2018">2018</option>
                 <option key="2017" value="2017">2017</option>
                 <option key="2016" value="2016">2016</option>
@@ -79,41 +85,56 @@ class StatsGrid extends Component {
         return playerData;
     }
 
-    newCreatePlayerRows = (playerData, playerButtonHandler) => {
+    newCreatePlayerRows = (playerData, playerButtonHandler, draftPlayerHandler) => {
         const data = [];
 
         const renderPlayerButton = (props) =>{
             return(
                 <span>
-                    <Button onClick={props.record.handler} value={props.record.playerId} color="primary">Select</Button>
+                    <Button onClick={props.record.selectPlayerHandler} value={props.record.playerId} color="primary">Select</Button>
+                </span>
+            )
+        };
+
+        const renderDraftButton = (props) =>{
+            return(
+                <span>
+                    <Button onClick={props.record.draftPlayerHandler} value={props.record.playerId} color="red">Draft</Button>
                 </span>
             )
         };
 
         const fields = [
-            { name: "",                  displayName: this.dropdown(),                   buttonMethod:this.handleSelectPlayer, render:renderPlayerButton },
-            { name: 'name',              displayName: "Name",               inputFilterable: true, sortable: true },
-            { name: 'average',           displayName: "Average",            inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'battingPercentage', displayName: "OBP",  inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'plateAppearances',  displayName: "PA",   inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'atBats',            displayName: "AB",             inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'runs',              displayName: "Runs",               inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'hits',              displayName: "Hits",               inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'firstBase',         displayName: "Singles",          inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'secondBase',        displayName: "Doubles",         inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'thirdBase',         displayName: "Triples",          inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'homeRuns',          displayName: "HR",           inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'rbis',              displayName: "RBIS",               inputFilterable: true, exactFilterable: true, sortable: true },
-            { name: 'walks',             displayName: "BB",              inputFilterable: true, exactFilterable: true, sortable: true }
-
-
+            { name: "",                  displayName: this.dropdown(), buttonMethod:this.handleSelectPlayer, render:renderPlayerButton },
+            { name: 'name',              displayName: "Name",          inputFilterable: true, sortable: true },
+            { name: 'average',           displayName: "AVG",           inputFilterable: true, exactFilterable: true, sortable: true }
         ];
+
+        if(this.props.isDraft){
+            fields.splice(0,0,{ name: "",displayName: "",buttonMethod:this.draftSelectPlayer, render:renderDraftButton })
+        }else{
+            fields.push(
+
+                { name: 'battingPercentage', displayName: "OBP",           inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'plateAppearances',  displayName: "PA",            inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'atBats',            displayName: "AB",            inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'runs',              displayName: "Runs",          inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'hits',              displayName: "Hits",          inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'firstBase',         displayName: "Singles",       inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'secondBase',        displayName: "Doubles",       inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'thirdBase',         displayName: "Triples",       inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'homeRuns',          displayName: "HR",            inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'rbis',              displayName: "RBIS",          inputFilterable: true, exactFilterable: true, sortable: true },
+                { name: 'walks',             displayName: "BB",            inputFilterable: true, exactFilterable: true, sortable: true }
+            )
+        }
 
         playerData.forEach(function(dataItem){
            data.push(
                {
                    playerId: dataItem.playerId,
-                   handler:playerButtonHandler,
+                   selectPlayerHandler:playerButtonHandler,
+                   draftPlayerHandler:draftPlayerHandler,
                    button:"select",
                    name: dataItem.name,
                    plateAppearances:dataItem.plateAppearances,
@@ -130,6 +151,10 @@ class StatsGrid extends Component {
                    average:dataItem.average
                }
            )
+        });
+
+        data.sort(function(a, b){
+            return b.average - a.average;
         });
 
         return (
@@ -162,7 +187,7 @@ class StatsGrid extends Component {
                     </Card.Header>
                     <Card.Body>
                         <div className="DottedBox">
-                            {this.newCreatePlayerRows(sortData, this.handleSelectPlayer)}
+                            {this.newCreatePlayerRows(sortData, this.handleSelectPlayer, this.draftSelectPlayer)}
                         </div>
                     </Card.Body>
                 </Card>
@@ -172,10 +197,12 @@ class StatsGrid extends Component {
 }
 
 StatsGrid.propTypes = {
+    draftPlayer: PropTypes.func,
     updateYear: PropTypes.func,
     selectPlayer: PropTypes.func,
     players: PropTypes.array,
-    year :   PropTypes.number
+    year :   PropTypes.number,
+    isDraft: PropTypes.bool
 };
 
 export default StatsGrid;
