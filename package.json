@@ -12,7 +12,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.5",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.9.4",
     "fetch": "^1.1.0",
     "i": "^0.3.6",
     "npm": "^6.9.0",
